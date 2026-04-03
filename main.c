@@ -29,24 +29,24 @@
 // #include "scheduler.h"
 
 // int main() {
-//     // 1. Création de deux processus distincts
+//     // 1. Création de deux processus différents
 //     Process *p1 = create_process(1, 10, 50); // Très prioritaire
 //     Process *p2 = create_process(2, 1, 200); // Peu prioritaire
 
 //     if (p1 == NULL || p2 == NULL) return 1;
 
-//     // 2. LE CHAÎNAGE (C'est ici que la magie opère)
-//     p1->suivant = p2;      // p1 pointe vers p2
+//     // 2. LE CHAÎNAGE
+//     p1->suivant = p2;      // p1 pointe dvers p2
 //     p2->precedent = p1;    // p2 pointe vers p1 (doublement chaînée)
 
-//     // 3. Test de navigation : On part de p1 pour afficher les infos de p2
+//     // Test de navigation : On part de p1 pour afficher les infos de p2
 //     printf("Je suis le processus %d.\n", p1->id);
 //     if (p1->suivant != NULL) {
 //         printf("Mon successeur est le processus %d avec une priorite de %d.\n", 
 //                 p1->suivant->id, p1->suivant->priority);
 //     }
 
-//     // 4. LIBÉRATION (Attention, il faut libérer les deux !)
+//     
 //     free(p1);
 //     free(p2);
 
@@ -56,7 +56,7 @@
 int main() {
     Process *liste = NULL;
 
-    // On ajoute 3 processus à la chaîne
+    
     liste = ajouter_process_a_la_fin(liste, create_process(1, 10, 30));
     liste = ajouter_process_a_la_fin(liste, create_process(2, 5, 100));
     liste = ajouter_process_a_la_fin(liste, create_process(3, 8, 20));
@@ -68,7 +68,7 @@ int main() {
         curr = curr->suivant;
     }
 
-    // ON NETTOIE TOUT
+    // On libère de la mémoire
     free_all_processes(liste);
 
     return 0;
