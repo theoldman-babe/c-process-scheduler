@@ -53,23 +53,43 @@
 //     printf("\nTout a ete libere.\n");
 //     return 0;
 // 
-int main() {
-    Process *liste = NULL;
+// int main() {
+//     Process *liste = NULL;
 
     
-    liste = ajouter_process_a_la_fin(liste, create_process(1, 10, 30));
-    liste = ajouter_process_a_la_fin(liste, create_process(2, 5, 100));
-    liste = ajouter_process_a_la_fin(liste, create_process(3, 8, 20));
+//     liste = ajouter_process_a_la_fin(liste, create_process(1, 10, 30));
+//     liste = ajouter_process_a_la_fin(liste, create_process(2, 5, 100));
+//     liste = ajouter_process_a_la_fin(liste, create_process(3, 8, 20));
 
-    // Test d'affichage simple
-    Process *curr = liste;
-    while(curr != NULL) {
-        printf("Processus ID: %d | Priority: %d\n", curr->id, curr->priority);
-        curr = curr->suivant;
-    }
+//     // Test d'affichage simple
+//     Process *curr = liste;
+//     while(curr != NULL) {
+//         printf("Processus ID: %d | Priority: %d\n", curr->id, curr->priority);
+//         curr = curr->suivant;
+//     }
 
-    // On libère de la mémoire
-    free_all_processes(liste);
+//     // On libère de la mémoire
+//     free_all_processes(liste);
 
-    return 0;
-}
+//     return 0;
+// }
+int main(){
+   Process* liste=NULL;
+     liste = inserer(liste, create_process (1, 10, 100)); // ID 1, Prio 10
+     liste = inserer(liste, create_process (2, 25, 100)); // ID 2, Prio 25 (Nouveau Chef)
+     liste = inserer(liste, create_process (3, 5, 100));  // ID 3, Prio 5  (Fin)
+     liste = inserer(liste, create_process (4, 15, 100)); // ID 4, Prio 15 (Milieu)
+     // Affichage pour vérifier
+     Process* curr = liste;
+     printf("Etat de la liste : ");
+     while(curr != NULL) {
+         printf("[ID:%d|Prio:%d] <-> ", curr->id, curr->priority);
+         curr = curr->suivant;
+     }
+     printf("NULL\n");
+
+    // Nettoyage
+     free_all_processes(liste);
+
+     return 0;
+ }
