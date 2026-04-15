@@ -15,7 +15,8 @@ typedef struct Process{
     struct Process *precedent;// un pointeur qui pointe vers le process precedent
 } Process ;
 
-// Prototypes des fonctions (on les implémentera plus tard)
+// Prototypes des fonctions
+
 Process* create_process(int id, int priority, int time);
 
 Process* ajouter_process_a_la_fin(Process *tete, Process *nv_p);
